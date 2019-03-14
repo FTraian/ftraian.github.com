@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<script>
+var app = angular.module("compoundInterestCalculator", []);
+app.controller("calculatorCtrl", function($scope) {
+  $scope.result = function() {
+    return $scope.principal*(1+$scope.interestRate/$scope.compoundingFreq)^($scope.compoundingFreq*$scope.investmentPeriod);
+  }
+});
+</script>
+
+<div ng-app="compoundInterestCalculator" ng-cloak ng-controller="calculatorCtrl" class="w3-card-2 w3-margin" style="max-width:400px;">
+  <header class="w3-container w3-light-grey w3-padding-16">
+    <h3>“Compound interest is the eighth wonder of the world. He who understands it, earns it ... he who doesn't ... pays it.”</h3>
+    <h4>- Albert Einstein</h4>
+  </header>
+  <div>Amount to invest:</div>
+  <input class="w3-input" type="number" ng-model="principal">
+  <div>Interest rate (eg. 4% as 0.04):</div>
+  <input class="w3-input" type="number" ng-model="interestRate">
+  <div>Compounding frequency (e.g. 1 for anually, 1/12=0.083 for monthly):</div>
+  <input class="w3-input" type="number" ng-model="compoundingFreq">
+  <div>Investment period (in years):</div>
+  <input class="w3-input" type="number" ng-model="investmentPeriod">
+  <br>
+  <div>After {{investmentPeriod}} years, if you invest {{principal}} at {{interestRate}} you will get:</div>
+
+  <p>{{ result() }}</p>
+</div>
+
+</body>
+</html>
+
