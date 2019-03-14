@@ -8,7 +8,7 @@
 var app = angular.module("compoundInterestCalculator", []);
 app.controller("calculatorCtrl", function($scope) {
   $scope.result = function() {
-    return $scope.principal*(1+$scope.interestRate/$scope.compoundingFreq)^($scope.compoundingFreq*$scope.investmentPeriod);
+    return $scope.principal*Math.pow((1 + $scope.interestRate/$scope.compoundingFreq),($scope.compoundingFreq*$scope.investmentPeriod));
   }
 });
 </script>
@@ -22,7 +22,7 @@ app.controller("calculatorCtrl", function($scope) {
   <input class="w3-input" type="number" ng-model="principal">
   <div>Interest rate (eg. 4% as 0.04):</div>
   <input class="w3-input" type="number" ng-model="interestRate">
-  <div>Compounding frequency (e.g. 1 for anually, 1/12=0.083 for monthly):</div>
+  <div>Compounding frequency (i.e. how many times a year you get the interest. For monthly this is 12):</div>
   <input class="w3-input" type="number" ng-model="compoundingFreq">
   <div>Investment period (in years):</div>
   <input class="w3-input" type="number" ng-model="investmentPeriod">
